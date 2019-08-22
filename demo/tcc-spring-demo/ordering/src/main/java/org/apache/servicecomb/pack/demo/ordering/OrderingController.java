@@ -29,10 +29,10 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 @RequestMapping("/ordering")
 public class OrderingController {
-  @Value("${inventory.service.address:http://inventory.servicecomb.io:8080}")
+  @Value("${inventory.service.address:http://inventory.servicecomb.io:8081}")
   private String inventoryServiceUrl;
 
-  @Value("${payment.service.address:http://payment.servicecomb.io:8080}")
+  @Value("${payment.service.address:http://payment.servicecomb.io:8085}")
   private String paymentServiceUrl;
 
   @Autowired
