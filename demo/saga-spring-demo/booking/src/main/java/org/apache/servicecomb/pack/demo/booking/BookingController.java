@@ -39,16 +39,16 @@ public class BookingController {
 
   private static final Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-  @Value("${car.service.address:http://car.servicecomb.io:8080}")
+  @Value("${car.service.address:http://car.servicecomb.io:8888}")
   private String carServiceUrl;
 
-  @Value("${hotel.service.address:http://hotel.servicecomb.io:8080}")
+  @Value("${hotel.service.address:http://hotel.servicecomb.io:6666}")
   private String hotelServiceUrl;
 
   @Autowired
   private RestTemplate template;
 
-  @SagaStart
+  @SagaStart(timeout = 10)
   @PostMapping("/booking/{name}/{rooms}/{cars}")
   public String order(@PathVariable String name,  @PathVariable Integer rooms, @PathVariable Integer cars) {
     template.postForEntity(
